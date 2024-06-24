@@ -81,8 +81,7 @@ CREATE TABLE `tb_pengguna` (
 --
 
 INSERT INTO `tb_pengguna` (`id_pengguna`, `nama_pengguna`, `username`, `password`, `level`) VALUES
-(1, 'erwin', 'erwin', 'erwin', 'Administrator'),
-(2, 'Andi Nur Awang', 'awang', 'awang', 'Administrator');
+(1, 'admin', 'admin', 'admin', 'Administrator');
 
 --
 -- Indexes for dumped tables
