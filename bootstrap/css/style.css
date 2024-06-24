@@ -1,0 +1,98 @@
+body {
+  font-family: Arial, sans-serif;
+  background: url('dist/img/latarku.png') fixed;
+  background-size: cover;
+}
+
+th,
+td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.container {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 25%;
+  transition: margin-top 0.5s ease;
+}
+
+.search-box {
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+}
+
+.search-box input[type='text'] {
+  width: 100%;
+  padding: 15px 20px;
+  border: 1px solid #dfe1e5;
+  border-radius: 24px;
+  box-shadow: none;
+  font-size: 16px;
+  outline: none;
+}
+
+.search-box button {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.search-box input[type='text']::placeholder {
+  font-size: 16px;
+}
+
+.search-box button i {
+  font-size: 20px;
+  color: #4285f4;
+}
+
+.table {
+  background-color: white;
+  table-layout: fixed;
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.table-responsive {
+  overflow-x: hidden;
+  margin-top: 10px;
+}
+
+.pdf-container .toolbar {
+  display: none !important;
+}
+
+.dataTables_filter {
+  display: none;
+}
+
+.table-responsive {
+  overflow-x: hidden;
+}
+.main-footer {
+  position: fixed;
+  bottom: 0;
+  background-color: azure;
+}
+.alert-info {
+  margin-top: 10px;
+  background: none;
+  color: black;
+  font-size: 16px;
+}
