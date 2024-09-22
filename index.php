@@ -126,7 +126,7 @@
 					<li class="treeview">
 						<a href="?page=MyApp/data_buku">
 							<i class="fa fa-book"></i>
-							<span>Kelola Skripsi</span>
+							<span>Kelola Karya Tulis</span>
 							<span class="pull-right-container">
 							</span>
 						</a>
@@ -135,7 +135,7 @@
 					<li class="treeview">
 						<a href="?page=MyApp/data_agt">
 							<i class="fa fa-users"></i>
-							<span>Kelola Anggota</span>
+							<span>Kelola Mahasiswa</span>
 							<span class="pull-right-container">
 							</span>
 						</a>
@@ -147,7 +147,7 @@
 					<li class="treeview">
 						<a href="?page=MyApp/data_pengguna">
 							<i class="fa fa-user"></i>
-							<span>Pengguna Sistem</span>
+							<span>Kelola Admin</span>
 							<span class="pull-right-container">
 							</span>
 						</a>
@@ -187,7 +187,7 @@
                   include "home/admin.php";
                   break;
               case 'petugas':
-                  include "home/petugas.php";
+                  include "home/anggota.php";
                   break;
         
               //Pengguna
@@ -234,6 +234,12 @@
 				  break;
               case 'reading':
                   include "admin/buku/read_buku.php";
+				  break;
+			  case 'MyApp/cetak':
+				  include "admin/buku/cetak.php";
+				  break;
+			  case 'MyApp/cetak_pdf':
+				  include "admin/buku/cetak_pdf.php";
 				  break;
 				  
           
