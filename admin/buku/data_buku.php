@@ -27,6 +27,7 @@
 							<th>JUDUL KARYA TULIS</th>
 							<th>PROGRAM STUDI</th>
 							<th>JENIS</th>
+							<th>KATA KUNCI</th>
 							<th>TAHUN TERBIT</th>
 							<th>TGL UPLOAD</th>
 							<th>AKSI</th>
@@ -60,6 +61,9 @@
 							</td>
 							<td>
 								<?php echo $data['jenis']; ?>
+							</td>
+							<td>
+								<?php echo $data['kata_kunci']; ?>
 							</td>
 							<td>
 								<?php echo $data['tahun']; ?>
