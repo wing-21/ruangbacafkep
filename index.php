@@ -42,6 +42,7 @@
 	<link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
 
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+	
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
