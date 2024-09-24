@@ -12,7 +12,7 @@ $halaman = isset($_GET['halaman']) ? $_GET['halaman'] : 'home.php';
 // Cek apakah form pencarian disubmit
 if (isset($_GET["cari"])) {
     $search = $_GET["search"];
-    $sql = $koneksi->query("SELECT * FROM tb_buku WHERE judul_buku LIKE '%$search%' OR penerbit LIKE '%$search%' OR jenis LIKE '%$search%' ORDER BY id_buku DESC");
+    $sql = $koneksi->query("SELECT * FROM tb_buku WHERE judul_buku LIKE '%$search%' OR penerbit LIKE '%$search%' OR jenis LIKE '%$search%' ORDER BY tahun DESC");
     $result_found = true;
 }
 ?>
@@ -58,7 +58,6 @@ if (isset($_GET["cari"])) {
                 <thead>
                     <tr>
                         <th style="width: 5%;">NO</th>
-                        <th style="width: 10%;">ID</th>
                         <th style="width: 25%;">PENULIS</th>
                         <th style="width: 40%;">JUDUL</th>
                         <th style="width: 10%;">JENIS</th>
@@ -73,7 +72,6 @@ if (isset($_GET["cari"])) {
                     ?>
                     <tr>
                         <td><?php echo $no++; ?></td>
-                        <td><?php echo $data['id_buku']; ?></td>
                         <td><?php echo strtoupper($data['penerbit']); ?></td>
                         <td><?php echo strtoupper ($data['judul_buku']); ?></td>
                         <td><?php echo $data['jenis']; ?></td>
