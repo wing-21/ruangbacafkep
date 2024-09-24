@@ -12,7 +12,7 @@ $halaman = isset($_GET['halaman']) ? $_GET['halaman'] : 'home.php';
 // Cek apakah form pencarian disubmit
 if (isset($_GET["cari"])) {
     $search = $_GET["search"];
-    $sql = $koneksi->query("SELECT * FROM tb_buku WHERE judul_buku LIKE '%$search%' OR penerbit LIKE '%$search%'");
+    $sql = $koneksi->query("SELECT * FROM tb_buku WHERE judul_buku LIKE '%$search%' OR penerbit LIKE '%$search%' OR jenis LIKE '%$search%' ORDER BY id_buku DESC");
     $result_found = true;
 }
 ?>
@@ -57,11 +57,13 @@ if (isset($_GET["cari"])) {
             <table id="example1" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th style="width: 5%;">No</th>
-                        <th style="width: 15%;">Id Skripsi</th>
-                        <th style="width: 40%;">Judul Skripsi</th>
-                        <th style="width: 25%;">Penerbit</th>
-                        <th style="width: 15%;">Aksi</th>
+                        <th style="width: 5%;">NO</th>
+                        <th style="width: 10%;">ID</th>
+                        <th style="width: 25%;">PENULIS</th>
+                        <th style="width: 40%;">JUDUL</th>
+                        <th style="width: 10%;">JENIS</th>
+                        <th style="width: 10%;">TAHUN</th>
+                        <th style="width: 10%;">AKSI</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -72,8 +74,10 @@ if (isset($_GET["cari"])) {
                     <tr>
                         <td><?php echo $no++; ?></td>
                         <td><?php echo $data['id_buku']; ?></td>
-                        <td><?php echo $data['judul_buku']; ?></td>
-                        <td><?php echo $data['penerbit']; ?></td>
+                        <td><?php echo strtoupper($data['penerbit']); ?></td>
+                        <td><?php echo strtoupper ($data['judul_buku']); ?></td>
+                        <td><?php echo $data['jenis']; ?></td>
+                        <td><?php echo $data['tahun']; ?></td>
                         <td>
                             <a href="pdf_viewer.php?kode=<?php echo $data['id_buku']; ?>&halaman=<?php echo urlencode($halaman); ?>" title="Buka PDF" class="btn btn-danger">
                                 <i class="fa fa-file"></i> Pdf
