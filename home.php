@@ -7,13 +7,19 @@ $result_found = false;
 $sql = null;
 
 // Ambil nilai halaman dari parameter GET jika ada
-$halaman = isset($_GET['halaman']) ? $_GET['halaman'] : 'home.php';
+$current_page = isset($_GET['halaman']) ? $_GET['halaman'] : 'home.php';
 
 // Cek apakah form pencarian disubmit
 if (isset($_GET["cari"])) {
-    $search = $_GET["search"];
+    $search = mysqli_real_escape_string($koneksi, $_GET["search"]);
     $sql = $koneksi->query("SELECT * FROM tb_buku WHERE judul_buku LIKE '%$search%' OR penerbit LIKE '%$search%' OR jenis LIKE '%$search%' OR tahun LIKE '%$search%' ORDER BY tahun DESC, id_buku DESC");
-    $result_found = true;
+    
+    if ($sql) {
+        $result_found = true;
+    } else {
+        // Tampilkan pesan kesalahan jika query gagal
+        echo "<div class='alert alert-danger'>Error: " . mysqli_error($koneksi) . "</div>";
+    }
 }
 ?>
 
@@ -96,12 +102,12 @@ if (isset($_GET["cari"])) {
                     ?>
                     <tr>
                         <td><?php echo $no++; ?></td>
-                        <td><?php echo strtoupper($data['penerbit']); ?></td>
-                        <td><?php echo strtoupper($data['judul_buku']); ?></td>
-                        <td><?php echo $data['jenis']; ?></td>
-                        <td><?php echo $data['tahun']; ?></td>
+                        <td><?php echo strtoupper(htmlspecialchars($data['penerbit'])); ?></td>
+                        <td><?php echo strtoupper(htmlspecialchars($data['judul_buku'])); ?></td>
+                        <td><?php echo htmlspecialchars($data['jenis']); ?></td>
+                        <td><?php echo htmlspecialchars($data['tahun']); ?></td>
                         <td>
-                            <a href="pdf_viewer.php?kode=<?php echo $data['id_buku']; ?>&halaman=<?php echo urlencode($halaman); ?>&search=<?php echo urlencode($search); ?>" title="Buka PDF" class="btn btn-danger">
+                            <a href="pdf_viewer.php?kode=<?php echo $data['id_buku']; ?>&halaman=<?php echo urlencode($current_page); ?>&search=<?php echo urlencode($search); ?>" title="Buka PDF" class="btn btn-danger">
                                 <i class="fa fa-file"></i> PDF
                             </a>
                         </td>
@@ -111,7 +117,7 @@ if (isset($_GET["cari"])) {
             </table>
         </div>
         <?php } elseif ($result_found && $sql->num_rows == 0) { ?>
-            <div class="alert-info">Data Tidak Ditemukan !</div>
+            <div class="alert alert-info">Data Tidak Ditemukan!</div>
         <?php } ?>
     </div>
 
